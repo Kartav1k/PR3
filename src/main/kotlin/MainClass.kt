@@ -2,7 +2,7 @@ data class Card(val rank: String, val suit: String)
 
 class Deck {
     private val ranks = listOf("6", "7", "8", "9", "10", "Валет", "Дама", "Король", "Туз")
-    private val suits = listOf("Черви", "Бубны", "Пики", "Трефы")
+    private val suits = listOf("♥", "♦", "♠", "♣")
     private val cards = mutableListOf<Card>()
 
     init {

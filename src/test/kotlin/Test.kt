@@ -5,40 +5,46 @@ import org.junit.jupiter.api.Test
 class DeckTest {
     lateinit var deck: Deck
 
+    //Создание новой колоды перед каждым тестом
     @BeforeEach
     fun setUp() {
         deck = Deck()
     }
 
+    //Проверка на наличие 36 карт в колоде
     @Test
-    fun `deck should be initialized with 36 cards`() {
+    fun ChekingForCardsInTheDeck() {
         assertEquals(36, deck.cardsLeft())
     }
 
+    //Проверка на изменяемость в колоде
     @Test
-    fun `dealing a card should reduce the number of cards left`() {
+    fun CheckingForChangeabilityInTheDeck() {
         val initialCardsLeft = deck.cardsLeft()
         deck.dealCard()
         assertEquals(initialCardsLeft - 1, deck.cardsLeft())
     }
 
+    //Проверка на возврат различных карт
     @Test
-    fun `dealing cards should return distinct cards`() {
+    fun CheckingForTheReturnOfVariousCards() {
         val card1 = deck.dealCard()
         val card2 = deck.dealCard()
         assertNotEquals(card1, card2)
     }
 
+    //Проверка на пустую колоду
     @Test
-    fun `dealing all cards should result in an empty deck`() {
+    fun CheckingForAnEmptyDeck() {
         repeat(36) {
             deck.dealCard()
         }
         assertEquals(0, deck.cardsLeft())
     }
 
+    //Проверка на возврат нуля при исчерпании колоды
     @Test
-    fun `dealing a card from an empty deck should return null`() {
+    fun CheckingForExhaustionOfTheDeck() {
         repeat(36) {
             deck.dealCard()
         }
