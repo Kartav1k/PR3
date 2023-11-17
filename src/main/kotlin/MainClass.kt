@@ -1,5 +1,3 @@
-import kotlin.random.Random
-
 data class Card(val rank: String, val suit: String)
 
 class Deck {
@@ -27,4 +25,24 @@ class Deck {
     fun cardsLeft(): Int {
         return cards.size
     }
+}
+fun printHand(player: String, hand: List<Card>) {
+    println("$player рука:")
+    hand.forEachIndexed { index, card ->
+        println("$index - ${card.rank} ${card.suit}")
+    }
+}
+
+fun main() {
+    val deck = Deck()
+    val ranks = listOf("6", "7", "8", "9", "10", "Валет", "Дама", "Король", "Туз")
+    val player1Hand = mutableListOf<Card>()
+    val player2Hand = mutableListOf<Card>()
+
+    repeat(6) {
+        player1Hand.add(deck.dealCard()!!)
+        player2Hand.add(deck.dealCard()!!)
+    }
+
+
 }
